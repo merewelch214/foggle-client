@@ -19,23 +19,23 @@ window.addEventListener('DOMContentLoaded', function() {
         ['D', 'E', 'I', 'L', 'R', 'X']
     ]
 
+    const mainContainer = document.getElementById('main-container')
     const startTimerButton = document.getElementById('start-timer')
+    const homeContainer = document.getElementById('home-container')
     const timerOuterDiv = document.getElementById('timer-container')
     const grid = document.getElementById('board-container')
-    const wordsContainer = document.getElementById('words-container')
     const letterBar = document.getElementById('letter')
     const clearBoardButton = document.getElementById('clear-board')
     const addWordButton = document.getElementById('add-word')
     const submittedWordsUl = document.getElementById('submitted-words-ul')
-    const doneButton = document.getElementById('done')
     const doneDiv = document.getElementById('finished')
     const modal = document.getElementById("myModal")
-    const welcomeModal = document.getElementById("myWelcomeModal")
+    const welcomeModal = document.getElementById("welcome-modal")
     const scoreSpan = document.getElementById('score-num')
     const featuresDiv = document.getElementsByClassName('other-features')[0]
     const undoButton = document.getElementById('undo')
     const wordControlButtons = document.getElementById('word-control-buttons')
-    let welcomeCloseButton = document.getElementById('welcome-close')
+    const gameContainer = document.getElementById('game-container')
     let scoreCloseButton = document.getElementById('score-close')
     let allWordsArray = []
     let currentWordContainer = document.getElementById('current-word-container')
@@ -46,20 +46,23 @@ window.addEventListener('DOMContentLoaded', function() {
     let game_id;
     let interval;
 
-    timerOuterDiv.addEventListener('click', function(e) {
+    homeContainer.addEventListener('click', function(e) {
         if (e.target === startTimerButton) {
-            featuresDiv.style.display = "block";
+            console.log('help')
             e.preventDefault()
+            mainContainer.replaceChild(gameContainer, homeContainer)
+            gameContainer.style.visibility = 'visible'
+            // timerOuterDiv.replaceChild(gameContainer, userForm)
+
+
+            featuresDiv.style.display = "block";
+            
             grid.innerHTML = ''
-            timerOuterDiv.replaceChild(timerInnerP, userForm)
             time = 60
             timerInnerP.innerText = `Time: ${time}`
             interval = setInterval(countDown, 1000)
             createBoard()
-            currentWordContainer.style.visibility = 'visible'
-            wordControlButtons.style.visibility = 'visible'
-            wordsContainer.style.visibility = 'visible'
-            doneButton.style.visibility = 'visible'
+
             let username = e.target.parentNode.username.value
             fetch('http://localhost:3000/api/v1/games', {
                     method: "POST",
@@ -195,44 +198,31 @@ window.addEventListener('DOMContentLoaded', function() {
             })
     }
 
-
-    welcomeCloseButton.onclick = function(e) {
+    userForm.onsubmit = function(e) {
         welcomeModal.style.display = "none";
+        
     }
 
     scoreCloseButton.onclick = function(e) {
-        modal.style.display = "none"
+        modal.style.display = 'none'
+        gameContainer.style.display = 'visible'
     }
-
-    window.onclick = function(e) {
-        console.log(e.target === welcomeModal)
-        if (e.target === welcomeModal) {
-            welcomeModal.style.display = "none";
-        }
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
-    }
-
-
-
-
 
     undoButton.addEventListener('click', function(e) {
-            let [x, y] = letterCoordinates[0]
-            let allItems = document.getElementsByClassName('item')
-            let allItemsArray = Array.from(allItems)
-            let target = allItemsArray.find(function(tile) {
-                let tileX = parseInt(tile.dataset.xId)
-                let tileY = parseInt(tile.dataset.yId)
+            const [x, y] = letterCoordinates[0]
+            const allItems = document.getElementsByClassName('item')
+            const allItemsArray = Array.from(allItems)
+            const target = allItemsArray.find(function(tile) {
+                const tileX = parseInt(tile.dataset.xId)
+                const tileY = parseInt(tile.dataset.yId)
 
                 return tileX === x && tileY === y
             })
             target.style.backgroundColor = '#80CBC4'
-            let newLetterBarText = letterBar.innerText.slice(0, -1)
+            const newLetterBarText = letterBar.innerText.slice(0, -1)
             letterBar.innerText = newLetterBarText
             letterCoordinates.shift()
-        }) //ends eventlistener
+        }) 
 
 
 })

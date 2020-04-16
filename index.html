@@ -10,79 +10,86 @@
 </head>
 
 <body>
-    <div id="header"> B o G G L e </div>
-    <div id="timer-container">
-        <form id='user-form'>
-            <label for='username'>Your name:</label>
-            <input type='text' name='username' id='username'>
-            <button type='submit' value="submit" id='start-timer'>New game</button>
-        </form>
-    </div>
-    <div class="current-word" id="current-word-container" style='visibility: hidden'>
-        <h2>Current Word:</h2>
-        <p id="letter"></p>
-    </div>
-    <div id='word-control-buttons' style='visibility: hidden'>
-        <button id='add-word'>Add Word</button>
-        <button id='undo'>Undo</button>
-        <button id='clear-board'>Clear</button>
-    </div>
-    <div id="board-container">
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-        <div class="empty-item"></div>
-    </div>
-    <br>
+        <div id='main-container'>
+        <div id='home-container'>
+            <div id="header"> Foggle </div>
+            
+            <div id="welcome">
+                <p id='welcome-text'>Foggle is just like Boggle without copyright infringement. <br> <br> 
+                    Play Foggle online and test your skill at making words from letters. 
+                    Each of these games will present you with a matrix filled with letters. 
+                    The objective is to form words by concatenating adjacent letters. 
+                    Letters that are to the left, right, top, bottom, or diagonal to each other are all acceptable. <br> <br> 
+                    A timer will count down and when time expires your score will be computed based on word validation and shown on a score board. 
+                    If the move entered is invalid an alert will be shown. Enjoy! <br>
+                </p>
+                
+                <form id='user-form'>
+                    <label for='username' ></label>
+                    <input type='text' name='username' id='username' placeholder='Enter your name'  > 
+                    <button type='submit' value="submit" id='start-timer'>Start game</button>
+                </form>
+            </div>
+        </div>
 
-    <div id="words-container" style='visibility: hidden'>
-        <ul id="submitted-words-ul">
-        </ul>
-    </div>
-    <div id='finished'>
-        <button class="done" id="done" style='visibility: hidden'>Done!</button>
-    </div>
-    <div class='other-features'>
-        <button id='start-over'>Start Over</button><br>
-        <button id='Help'>Instructions</button>
-    </div>
+        <div id="game-container" style='visibility: hidden'>
+            <div id="header"> Foggle </div>
+            <div id="timer-container">
+            </div>
+            <div class="current-word" id="current-word-container">
+                <h2>Current Word:</h2>
+                <p id="letter"></p>
+            </div>
+            <div id='word-control-buttons'>
+                <button id='add-word'>Add Word</button>
+                <button id='undo'>Undo</button>
+                <button id='clear-board'>Clear</button>
+            </div>
+            <div id="board-container">
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+                <div class="empty-item"></div>
+            </div>
+            <br>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id='score-close'>&times;</span>
-            <div id="modal-header">F i n a l S c o r e</div>
-            <p id='final-score'>Your score is...</p>
-            <div id='score-num'> </div>
+            <div id="words-container">
+                <ul id="submitted-words-ul">
+                </ul>
+            </div>
+            <div id='finished'>
+                <button class="done" id="done">Done!</button>
+            </div>
+            <div class='other-features'>
+                <button id='start-over'>Start Over</button><br>
+                <button id='Help'>Instructions</button>
+            </div>
+            
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id='score-close'>&times;</span>
+                <div id="modal-header">Final Score</div>
+                <p id='final-score'>Your score is...</p>
+                <div id='score-num'> </div>
+            </div>
         </div>
     </div>
-
-    <div id="myWelcomeModal" class="welcome-modal">
-        <div class="welcome-modal-content">
-            <span class="close" id='welcome-close'>&times;</span>
-            <div id="welcome-modal-header">W e l c o m e !</div>
-            <p id='welcome-text'>Play Boggle online and test your skill at making words from letters. Each of these games will present you with a matrix filled with letters. The objective is to form words by concatenating adjacent letters. Letters that are to the left, right,
-                on top, bottom, or on a diagonal to each other are all acceptable. <br> <br> A timer will count down and when time expires your score will be computed based on word validation and shown on a score board. If the move entered is invalid
-                an alert will be shown. Enjoy! </p>
-        </div>
-    </div>
-    </div>
-
-
-
+</div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src='../src/script.js'></script>
+    <script src='./js/script.js'></script>
 </body>
 
 </html>
