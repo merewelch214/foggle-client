@@ -1,43 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"> </div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+    <link rel="stylesheet" href="./styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+    <div id="header"> B o G G L e </div>
+    <div id="timer-container">
+        <form id='user-form'>
+            <label for='username'>Your name:</label>
+            <input type='text' name='username' id='username'>
+            <button type='submit' value="submit" id='start-timer'>New game</button>
+        </form>
+    </div>
+    <div class="current-word" id="current-word-container" style='visibility: hidden'>
+        <h2>Current Word:</h2>
+        <p id="letter"></p>
+    </div>
+    <div id='word-control-buttons' style='visibility: hidden'>
+        <button id='add-word'>Add Word</button>
+        <button id='undo'>Undo</button>
+        <button id='clear-board'>Clear</button>
+    </div>
+    <div id="board-container">
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+        <div class="empty-item"></div>
+    </div>
+    <br>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    <div id="words-container" style='visibility: hidden'>
+        <ul id="submitted-words-ul">
+        </ul>
+    </div>
+    <div id='finished'>
+        <button class="done" id="done" style='visibility: hidden'>Done!</button>
+    </div>
+    <div class='other-features'>
+        <button id='start-over'>Start Over</button><br>
+        <button id='Help'>Instructions</button>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id='score-close'>&times;</span>
+            <div id="modal-header">F i n a l S c o r e</div>
+            <p id='final-score'>Your score is...</p>
+            <div id='score-num'> </div>
+        </div>
+    </div>
+
+    <div id="myWelcomeModal" class="welcome-modal">
+        <div class="welcome-modal-content">
+            <span class="close" id='welcome-close'>&times;</span>
+            <div id="welcome-modal-header">W e l c o m e !</div>
+            <p id='welcome-text'>Play Boggle online and test your skill at making words from letters. Each of these games will present you with a matrix filled with letters. The objective is to form words by concatenating adjacent letters. Letters that are to the left, right,
+                on top, bottom, or on a diagonal to each other are all acceptable. <br> <br> A timer will count down and when time expires your score will be computed based on word validation and shown on a score board. If the move entered is invalid
+                an alert will be shown. Enjoy! </p>
+        </div>
+    </div>
+    </div>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
 </html>
