@@ -118,12 +118,6 @@ button:active {
     transform: translateY(4px);
 }
 
-input[type=text] {
-    background: #EDF5E7;
-    padding: 5px;
-    width: 20%;
-}
-
 #words-container {
     background-color: white;
     font-family: Arial;
