@@ -102,19 +102,6 @@ body {
 }
 
 
-#timer-container {
-    background: red;
-    font-family: Helvetica;
-    font-size: 20px;
-    color: #ffffe6;
-}
-
-#current-word-container {
-    background: purple;
-    font-family: 'Roboto-Medium';
-    color: #ffffe6;
-    font-weight: bold;
-}
 
 button {
     background-color: #ffa31a;
@@ -238,8 +225,31 @@ input[type=text] {
 
 #left-side {
     flex: 0 0 800px;
+    display: flex;
 }
 
 #right-side {
+    flex: 1;
+}
+
+#left-upper {
+    flex: 1;
+    flex-direction: row;
+}
+
+#timer-container {
+    font-family: Helvetica;
+    font-size: 20px;
+    color: #ffffe6;
+    flex: 1;
+    border: white solid 1px;
+    border-radius: 5px;
+}
+
+#current-word-container {
+    background: purple;
+    font-family: 'Roboto-Medium';
+    color: #ffffe6;
+    font-weight: bold;
     flex: 1;
 }

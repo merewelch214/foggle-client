@@ -138,7 +138,6 @@ window.addEventListener('DOMContentLoaded', function() {
         return false;
     }
 
-
     function getRandomIndex() {
         return Math.floor(Math.random() * 6)
     }
