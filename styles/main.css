@@ -1,76 +1,130 @@
+/* red:  #ff471a
+yellow:  #ffa31a
+blue:  #3377ff
+white: #ffffe6
+ */
+
 body {
     height: 100%;
     width: 100%;
-    background-color: #EDF5E7;
+    background-image: linear-gradient(#001133, #3377ff)
 }
 
 @font-face {
-    font-family: 'Bowreghul';
-    src: url('./fonts/Bowreghul.ttf');
+    font-family: 'BowlbyOne-Regular';
+    src: url('./fonts/BowlbyOne-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('./fonts/Roboto-Medium.ttf');
+    font-weight: 300;
 }
 
 #word-control-buttons {
-    position: relative;
-    left: 430px;
-    top: 120px;
+    background: yellow;
 }
 
-#header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 11%;
+#display-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(1px, 0); }
+    100% { transform: translate(1px, 0);}
+  }
+
+#header-toggle {
+    flex: 1;
     width: 100%;
-    font-family: 'Bowreghul';
-    padding: 10px;
+    font-family: 'BowlbyOne-Regular';
     text-align: center;
-    font-size: 10vh;
-    background-color: #05386B;
-    color: #EDF5E7;
+    font-size: 20vh;
+    color: #ff471a;
+    -webkit-text-stroke: 3.2px #ffffe6;
+    letter-spacing: .03px;
+    animation: shake .8s infinite alternate;
+    animation-delay: 3s;
+}
+
+
+#header {
+    flex: 1;
+    width: 100%;
+    font-family: 'BowlbyOne-Regular';
+    text-align: center;
+    font-size: 20vh;
+    color: #ff471a;
+    -webkit-text-stroke: 3.2px #ffffe6;
+    letter-spacing: .03px;
+}
+
+#start-timer {
+    background-color: #ffa31a;
+    border: none;
+    text-decoration: none;
+}
+
+#start-timer:hover {
+    background-color: none;
+    transform: none;
+}
+
+#start-timer:active {
+    transform: none;
+}
+
+#welcome {
+    flex: 1;
+    color: white;
+    font-size: 18px;
+    font-family: 'Times New Roman';
+    padding: 15px 400px 0 400px;
+    text-align: left;
 }
 
 #user-form {
-    position: relative;
-    font-family: Arial;
+    display: flex;
+    justify-content: baseline;
     font-size: 20px;
-    width: 1500px;
-    color: #05386B;
-    font-weight: bold;
 }
 
+#username {
+    width: 250px;
+    border: none;
+}
+
+
 #timer-container {
-    position: absolute;
-    width: 75%;
-    top: 120px;
-    left: 120px;
+    background: red;
     font-family: Helvetica;
     font-size: 20px;
-    color: #05386B;
+    color: #ffffe6;
 }
 
 #current-word-container {
-    position: absolute;
-    top: 110px;
-    left: 230px;
-    width: 75%;
-    font-family: Arial;
-    color: #05386B;
+    background: purple;
+    font-family: 'Roboto-Medium';
+    color: #ffffe6;
     font-weight: bold;
 }
 
 button {
-    background-color: #05386B;
-    border: none;
+    background-color: #ffa31a;
     color: white;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 10px;
     font: "Open Sans";
     transition: transform 0.1s linear;
-    margin: 5px;
 }
 
 button:hover {
@@ -84,30 +138,26 @@ button:active {
 
 input[type=text] {
     background: #EDF5E7;
-    border-color: #05386B;
-    border-radius: 5%;
-    padding: 10px;
+    padding: 5px;
     width: 20%;
 }
 
 #words-container {
-    position: relative;
-    border-radius: 5px;
-    border-color: #379683;
-    background-color: rgb(183, 211, 209);
-    position: absolute;
-    right: 25%;
-    top: 200px;
-    width: 20%;
-    height: 65%;
+    background-color: white;
     font-family: Arial;
-    color: #05386B;
+    color: black;
     font-size: 30px;
     padding: 10px;
+    margin: 50px;
+    border-radius: 5px;
+}
+
+#other-features-buttons {
+    margin: 0 0 0 50px;
 }
 
 #letter {
-    color: #379683;
+    color: white;
     font-size: 30px;
     font-family: Arial;
     padding: none;
@@ -115,94 +165,46 @@ input[type=text] {
 }
 
 #board-container {
-    position: relative;
     display: grid;
     grid-template-columns: auto auto auto auto;
-    background-color: #379683;
+    background-color: #ffa31a;
     padding: 10px;
     border-radius: 10px;
-    top: 165px;
-    left: 170px;
-    width: 455px;
-    height: 455px;
-}
-
-.empty-item {
-    background-color: #80CBC4;
-    border: 2px solid #fff;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    width: 70px;
-    height: 70px;
-    margin: 10px;
+    width: 380px;
+    height: 380px;
+    margin: 20px 0 0 200px;
 }
 
 .item {
-    background-color: #80CBC4;
-    border: 2px solid #fff;
+    background-color: white;
+    border: 2px solid grey;
     text-align: center;
     border-radius: 5px;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     margin: auto;
     padding: 10px;
     font-size: 50px;
     text-align: center;
     font-family: Arial;
     font-weight: bold;
-    color: #05386B
-}
-
-#word-buttons {
-    left: 300px;
-    position: relative;
+    color: black
 }
 
 #finished {
-    /* display: none; */
-    position: absolute;
-    left: 75%;
-    top: 86%;
-}
-
-.modal {
-    display: none;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    background-color: black;
 }
 
 
-/* Modal Content/Box */
-
-.modal-content {
+.score-content {
     background-color: #fefefe;
     margin: 15% auto;
-    /* 15% from the top and centered */
-    font-family: 'Bowreghul';
     text-align: center;
     padding: 20px;
-    border: 1px solid #888;
-    width: 600px;
-    height: 400px;
-    color: #05386B;
+    width: 100%;
+    height: 100%;
+    color: black;
     font-size: 3vh;
-    /* Could be more or less, depending on screen size */
 }
 
 
@@ -222,109 +224,22 @@ input[type=text] {
     cursor: pointer;
 }
 
-.other-features {
-    display: none;
-    position: absolute;
-    left: 75%;
-    top: 70%;
-}
-
-#modal-header {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* height: 15%; */
-    width: 100%;
-    font-family: 'Bowreghul';
-    /* padding: 10px; */
-    text-align: center;
-    font-size: 8vh;
-    background-color: #05386B;
-    color: #EDF5E7;
-}
 
 #score-num {
-    color: #4C8FB9;
+    color: black;
     font-size: 10vh;
-    font-family: Luminari, fantasy;
-    font-variant-numeric: oldstyle-nums;
 }
 
-
-/* welcome modal */
-
-.welcome-modal {
-    display: block;
-    /* Hidden by default */
-    position: fixed;
-    /* Stay in place */
-    z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%;
-    /* Full width */
-    height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Black w/ opacity */
+#body-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
 }
 
-.welcome-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    font-family: 'Bowreghul';
-    text-align: center;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 700px;
-    height: 500px;
-    color: #05386B;
-    font-size: x-small;
+#left-side {
+    flex: 0 0 800px;
 }
 
-#modal-header {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* height: 15%; */
-    width: 100%;
-    font-family: 'Bowreghul';
-    /* padding: 10px; */
-    text-align: center;
-    font-size: 8vh;
-    background-color: #05386B;
-    color: #EDF5E7;
+#right-side {
+    flex: 1;
 }
-
-#welcome-text {
-    color: #4C8FB9;
-    font-size: 3vh;
-    font-family: Georgia;
-}
-
-#welcome-modal-header {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* height: 15%; */
-    width: 100%;
-    font-family: 'Bowreghul';
-    /* padding: 10px; */
-    text-align: center;
-    font-size: 8vh;
-    background-color: #05386B;
-    color: #EDF5E7;
-}
-
-
-/* Navy: #05386B
-Dark green: #379683
-neon green: #5cdB95
-light green: #8EE4AF
-whitish: #EDG5E1
-Orange:  */
