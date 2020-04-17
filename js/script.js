@@ -22,44 +22,34 @@ window.addEventListener('DOMContentLoaded', function() {
     const mainContainer = document.getElementById('main-container')
     const startTimerButton = document.getElementById('start-timer')
     const homeContainer = document.getElementById('home-container')
-    const timerOuterDiv = document.getElementById('timer-container')
-    const grid = document.getElementById('board-container')
+    const timerContainer = document.getElementById('timer-container')
+    const board = document.getElementById('board-container')
     const letterBar = document.getElementById('letter')
     const clearBoardButton = document.getElementById('clear-board')
     const addWordButton = document.getElementById('add-word')
     const submittedWordsUl = document.getElementById('submitted-words-ul')
-    const doneDiv = document.getElementById('finished')
-    const modal = document.getElementById("myModal")
-    const welcomeModal = document.getElementById("welcome-modal")
+    const otherFeaturesDiv = document.getElementById('other-features-buttons')
+    const score = document.getElementById("score")
     const scoreSpan = document.getElementById('score-num')
-    const featuresDiv = document.getElementsByClassName('other-features')[0]
     const undoButton = document.getElementById('undo')
     const wordControlButtons = document.getElementById('word-control-buttons')
     const gameContainer = document.getElementById('game-container')
-    let scoreCloseButton = document.getElementById('score-close')
     let allWordsArray = []
     let currentWordContainer = document.getElementById('current-word-container')
     let timerInnerP = document.createElement('p')
     let letterCoordinates = []
     let time;
-    let userForm = document.getElementById('user-form')
     let game_id;
     let interval;
 
     homeContainer.addEventListener('click', function(e) {
         if (e.target === startTimerButton) {
-            console.log('help')
             e.preventDefault()
             mainContainer.replaceChild(gameContainer, homeContainer)
-            gameContainer.style.visibility = 'visible'
-            // timerOuterDiv.replaceChild(gameContainer, userForm)
-
-
-            featuresDiv.style.display = "block";
-            
-            grid.innerHTML = ''
+            gameContainer.style.visibility = 'visible'            
             time = 60
-            timerInnerP.innerText = `Time: ${time}`
+            timerInnerP.innerHTML = `Time: ${time}`
+            timerContainer.appendChild(timerInnerP)
             interval = setInterval(countDown, 1000)
             createBoard()
 
@@ -78,7 +68,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 })
         }
     })
-
 
     wordControlButtons.addEventListener('click', function(e) {
         if (time > 0) {
@@ -114,10 +103,10 @@ window.addEventListener('DOMContentLoaded', function() {
             time--
             timerInnerP.innerText = `Time: ${time}`
         } else if (time === 0) {
-            modal.style.display = "block";
+            score.style.display = 'visible';
             alert('Time\'s up!')
             time = -1
-            timerOuterDiv.replaceChild(startTimerButton, timerInnerP)
+            timerContainer.replaceChild(startTimerButton, timerInnerP)
             currentWordContainer.style.visibility = 'hidden'
             let allItems = document.getElementsByClassName('item')
             Array.from(allItems).forEach(item => item.style.backgroundColor = '#80CBC4')
@@ -125,7 +114,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    grid.addEventListener('click', function(e) {
+    board.addEventListener('click', function(e) {
         let letterXId = parseInt(e.target.dataset.xId)
         let letterYId = parseInt(e.target.dataset.yId)
         let letter = e.target.innerText
@@ -159,22 +148,24 @@ window.addEventListener('DOMContentLoaded', function() {
             for (let y = 0; y < 4; y++) {
                 let currentLetterIndex = x + y;
                 let currentLetter = letterArrays[currentLetterIndex][getRandomIndex()]
-                grid.insertAdjacentHTML("beforeend", `
-            <div class="item" data-x-id=${x} data-y-id=${y}>${currentLetter}</div>`)
+                board.innerHTML += `<div class="item" data-x-id=${x} data-y-id=${y}>${currentLetter}</div>`
             }
         }
     }
 
-
-
-    doneDiv.addEventListener('click', function(e) {
+    otherFeaturesDiv.addEventListener('click', function(e) {
         if (e.target.id === 'done') {
+            console.log('your score is')
             showScore()
+        } else if (e.target.id === 'help') {
+            console.log('show instructions')
+        } else if (e.target.id === 'start-over') {
+            console.log('start game over')
         }
     })
 
     function showScore() {
-        modal.style.display = "block";
+        score.style.display = 'visible';
         clearInterval(interval)
         timerInnerP.innerText = ''
 
@@ -196,16 +187,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 let finalScore = userData.points
                 scoreSpan.innerText = finalScore
             })
-    }
-
-    userForm.onsubmit = function(e) {
-        welcomeModal.style.display = "none";
-        
-    }
-
-    scoreCloseButton.onclick = function(e) {
-        modal.style.display = 'none'
-        gameContainer.style.display = 'visible'
     }
 
     undoButton.addEventListener('click', function(e) {

@@ -10,9 +10,9 @@
 </head>
 
 <body>
-        <div id='main-container'>
+    <div id='main-container'>
         <div id='home-container'>
-            <div id="header"> Foggle </div>
+            <div id="header-toggle"> Foggle </div>
             
             <div id="welcome">
                 <p id='welcome-text'>Foggle is just like Boggle without copyright infringement. <br> <br> 
@@ -34,60 +34,42 @@
 
         <div id="game-container" style='visibility: hidden'>
             <div id="header"> Foggle </div>
-            <div id="timer-container">
-            </div>
-            <div class="current-word" id="current-word-container">
-                <h2>Current Word:</h2>
-                <p id="letter"></p>
-            </div>
-            <div id='word-control-buttons'>
-                <button id='add-word'>Add Word</button>
-                <button id='undo'>Undo</button>
-                <button id='clear-board'>Clear</button>
-            </div>
-            <div id="board-container">
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-                <div class="empty-item"></div>
-            </div>
-            <br>
-
-            <div id="words-container">
-                <ul id="submitted-words-ul">
-                </ul>
-            </div>
-            <div id='finished'>
-                <button class="done" id="done">Done!</button>
-            </div>
-            <div class='other-features'>
-                <button id='start-over'>Start Over</button><br>
-                <button id='Help'>Instructions</button>
-            </div>
             
+            <div id='body-container'>
+                <div id='left-side'><
+                    <div id="timer-container"></div>
+                    <div class="current-word" id="current-word-container">
+                        <span>Current Word:</span> 
+                        <span id="letter"></span>
+                    </div>
+                    <div id='word-control-buttons'>
+                        <button id='add-word'>Add Word</button>
+                        <button id='undo'>Undo</button>
+                        <button id='clear-board'>Clear</button>
+                    </div>
+                    <div id="board-container"></div>
+                </div>
 
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" id='score-close'>&times;</span>
-                <div id="modal-header">Final Score</div>
-                <p id='final-score'>Your score is...</p>
-                <div id='score-num'> </div>
+                <div id='right-side'>
+                    <div id="words-container">
+                        <ul id="submitted-words-ul">
+                        </ul>
+                    </div>
+                    <div id='other-features-buttons'>
+                        <button class="other-features" id='help'>Instructions</button>
+                        <button class="other-features" id='start-over'>Restart Game</button>
+                        <button class="other-features" id='done'>End Game</button>
+                    </div>
+                    <div id="score" style='visibility: hidden'>
+                        <h1>Your Score</h1>
+                        <p id='final-score'>Your score is...</p>
+                        <div id='score-num'> </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-</div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src='./js/script.js'></script>
 </body>
