@@ -114,11 +114,6 @@ button {
     transition: transform 0.1s linear;
 }
 
-button:hover {
-    background-color: rgb(59, 107, 155);
-    transform: scale(1.1);
-}
-
 button:active {
     transform: translateY(4px);
 }
