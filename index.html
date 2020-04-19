@@ -36,24 +36,24 @@
             <div id="header"> Foggle </div>
             
             <div id='body-container'>
+                
                 <div id='left-side'>
-                    <div id ='left-upper'>
-                        <div id="timer-container"></div>
-                        <div class="current-word" id="current-word-container">
-                            <span>Current Word:</span> 
-                            <span id="letter"></span>
-                        </div>
-                        <div id='word-control-buttons'>
-                            <button id='add-word'>Add Word</button>
-                            <button id='undo'>Undo</button>
-                            <button id='clear-board'>Clear</button>
-                        </div>
+                    <div id="timer-container"></div>
+                    <div class="current-word" id="current-word-container">
+                        <span>Current Word:</span> 
+                        <span id="letter"></span>
+                    </div>
+                    <div id='word-control-buttons'>
+                        <button id='add-word'>Add Word</button>
+                        <button id='undo'>Undo</button>
+                        <button id='clear-board'>Clear</button>
                     </div>
                     <div id="board-container"></div>
                 </div>
 
-                <div id='right-side'>
+                <div id='middle'>
                     <div id="words-container">
+                        <p>Submitted Words</p>
                         <ul id="submitted-words-ul">
                         </ul>
                     </div>
@@ -67,6 +67,12 @@
                         <p id='final-score'>Your score is...</p>
                         <div id='score-num'> </div>
                     </div>
+                </div>
+
+                <div id='right-side'>
+                    <div id='leader-board'>
+                        <p> Leader Board </p>
+                    </div>  
                 </div>
             </div>
         </div>

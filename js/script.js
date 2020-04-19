@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function() {
             mainContainer.replaceChild(gameContainer, homeContainer)
             gameContainer.style.visibility = 'visible'            
             time = 60
-            timerInnerP.innerHTML = `Time: ${time}`
+            timerInnerP.innerHTML = `${time}`
             timerContainer.appendChild(timerInnerP)
             interval = setInterval(countDown, 1000)
             createBoard()
@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function() {
     function countDown() {
         if (time > 0) {
             time--
-            timerInnerP.innerText = `Time: ${time}`
+            timerInnerP.innerText = `${time}`
         } else if (time === 0) {
             score.style.display = 'visible';
             alert('Time\'s up!')
