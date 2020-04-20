@@ -34,6 +34,7 @@ window.addEventListener('DOMContentLoaded', function() {
     const undoButton = document.getElementById('undo')
     const wordControlButtons = document.getElementById('word-control-buttons')
     const gameContainer = document.getElementById('game-container')
+    const leaderBoardHeader = document.getElementById('leader-board-header')
     let allWordsArray = []
     let currentWordContainer = document.getElementById('current-word-container')
     let timerInnerP = document.createElement('p')
@@ -55,17 +56,22 @@ window.addEventListener('DOMContentLoaded', function() {
 
             let username = e.target.parentNode.username.value
             fetch('http://localhost:3000/api/v1/games', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json',
-                        accepts: 'application/json'
-                    },
-                    body: JSON.stringify({ username })
-                })
-                .then(resp => resp.json())
-                .then(userData => {
-                    game_id = userData.id
-                })
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json',
+                    accepts: 'application/json'
+                },
+                body: JSON.stringify({ username })
+            })
+            .then(resp => resp.json())
+            .then(userData => {
+                game_id = userData.id
+            })
+
+            fetch('http://localhost:3000/api/v1/games')
+            .then(resp=>resp.json())
+            .then(leaderBoard=>
+                populateLeaderBoard(leaderBoard))
         }
     })
 
@@ -97,6 +103,15 @@ window.addEventListener('DOMContentLoaded', function() {
         submittedWordsUl.appendChild(wordLi)
     }
 
+    function populateLeaderBoard(data) {
+        let place = 1;
+        data.forEach(score => {
+          let tr = document.createElement('tr')
+          tr.innerHTML = `<td>${place}</td><td>${score.username}</td><td>${score.points}</td>`
+          leaderBoardHeader.append(tr)
+          place++;
+        })
+    }
 
     function countDown() {
         if (time > 0) {
