@@ -38,22 +38,27 @@
             <div id='body-container'>
                 
                 <div id='left-side'>
-                    <div id="timer-container"></div>
-                    <div class="current-word" id="current-word-container">
-                        <span>Current Word:</span> 
-                        <span id="letter"></span>
-                    </div>
-                    <div id='word-control-buttons'>
-                        <button id='add-word'>Add Word</button>
-                        <button id='undo'>Undo</button>
-                        <button id='clear-board'>Clear</button>
-                    </div>
                     <div id="board-container"></div>
+                    <div id='left-upper'>
+                        <div id="timer-container"></div>
+                        <div id='left-upper-right'>
+                            <div class="current-word" id="current-word-container">
+                                <span>Current Word:</span> 
+                                <span id="letter"></span>
+                            </div>
+                            <div id='word-control-buttons'>
+                                <button id='add-word'>Add Word</button>
+                                <button id='undo'>Undo</button>
+                                <button id='clear-board'>Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div id='middle'>
                     <div id="words-container">
-                        <p>Submitted Words</p>
+                        <p class='title'>Submitted Words</p>
                         <ul id="submitted-words-ul">
                         </ul>
                     </div>
@@ -70,8 +75,21 @@
                 </div>
 
                 <div id='right-side'>
-                    <div id='leader-board'>
-                        <p> Leader Board </p>
+                    <div id="words-container">
+                        <table class='table'>
+                            <thead>
+                                <tr class='title'>
+                                    <td>Place</td>
+                                    <td>Username</td>
+                                    <td>Points</td>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>1</td>
+                                <td>Meredith</td>
+                                <td>1000000</td>
+                            </tr>
+                        </table>
                     </div>  
                 </div>
             </div>

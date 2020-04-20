@@ -22,6 +22,13 @@ body {
     font-weight: 300;
 }
 
+@font-face {
+    font-family: 'Oxygen-Light';
+    src: url('./fonts/Oxygen-Light.ttf');
+    font-weight: 300;
+}
+
+
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -109,16 +116,15 @@ button:active {
 
 #words-container {
     background-color: white;
-    font-family: Arial;
+    font-family: 'Oxygen-Light';
     color: black;
-    font-size: 30px;
-    padding: 10px;
-    margin: 50px;
+    font-size: 18px;
+    height: 320px;
+    width: 280px;
+    margin-top: 24px;
     border-radius: 5px;
-}
-
-#other-features-buttons {
-    margin: 0 0 0 50px;
+    text-align: center;
+    overflow-y: scroll;
 }
 
 #letter {
@@ -130,6 +136,7 @@ button:active {
 }
 
 #board-container {
+    flex: 1;
     display: grid;
     grid-template-columns: auto auto auto auto;
     background-color: #ffa31a;
@@ -137,6 +144,7 @@ button:active {
     border-radius: 10px;
     width: 300px;
     height: 300px;
+    margin-top: 24px;
     /* margin: 20px 0 0 200px; */
 }
 
@@ -149,7 +157,6 @@ button:active {
     margin: auto;
     padding: 10px;
     font-size: 36px;
-    text-align: center;
     font-family: Arial;
     font-weight: bold;
     color: black
@@ -202,39 +209,70 @@ button:active {
 
 #left-side {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    padding: none;
 }
 
 #right-side {
     flex: 1;
+    justify-content: end;
+
 }
 
 #left-upper {
     flex: 1;
     flex-direction: row;
+    display: flex;
 }
 
 #timer-container {
     font-family: Helvetica;
     font-size: 20px;
     color: #ffffe6;
+    flex: 1;
+    margin: 20px 0px 0px 20px;
 }
 
 #current-word-container {
     font-family: 'Roboto-Medium';
-    color: #ffffe6;
-    font-weight: bold;
+    color: white;
+    /* font-weight: bold; */
 }
 
 #middle {
     flex: 1;
+    margin-left: 100px;
 }
 
-#leaderboard {
-    background-color: white;
-    font-family: Arial;
-    color: black;
-    font-size: 30px;
-    padding: 10px;
-    margin: 50px;
-    border-radius: 5px;
+#left-upper-right {
+    flex: 5;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+#other-features-buttons {
+    margin-top: 34px;
+}
+
+.table td {
+    text-align: left;
+    border-bottom: lightgrey solid 1px;
+}
+
+.table {
+    padding-left: 28px;
+}
+
+p {
+    margin: 0;
+}
+
+.title {
+    font-size: 22px;
 }

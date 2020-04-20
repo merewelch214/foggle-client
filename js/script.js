@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function() {
                 letterCoordinates = []
                 letterBar.innerText = ''
                 let allItems = document.getElementsByClassName('item')
-                Array.from(allItems).forEach(item => item.style.backgroundColor = '#80CBC4')
+                Array.from(allItems).forEach(item => item.style.backgroundColor = 'white')
             } else if (e.target === addWordButton) {
                 if (letterBar.innerText.length < 3) {
                     alert('must be longer than 3')
@@ -84,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function() {
                     createWordLi(letterBar.innerText)
                     letterBar.innerText = ''
                     let allItems = document.getElementsByClassName('item')
-                    Array.from(allItems).forEach(item => item.style.backgroundColor = '#80CBC4')
+                    Array.from(allItems).forEach(item => item.style.backgroundColor = 'white')
                     letterCoordinates = []
                 }
             }
@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
                 return tileX === x && tileY === y
             })
-            target.style.backgroundColor = '#80CBC4'
+            target.style.backgroundColor = 'white'
             const newLetterBarText = letterBar.innerText.slice(0, -1)
             letterBar.innerText = newLetterBarText
             letterCoordinates.shift()
