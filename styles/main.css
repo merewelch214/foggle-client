@@ -125,6 +125,7 @@ button:active {
     border-radius: 5px;
     text-align: center;
     overflow-y: scroll;
+    border: #ffa31a solid 10px;
 }
 
 #letter {
@@ -138,6 +139,18 @@ button:active {
 #board-container {
     flex: 1;
     display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #ffa31a;
+    padding: 10px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    margin-top: 24px;
+    /* margin: 20px 0 0 200px; */
+}
+
+.board-container {
+    flex: 1;
     grid-template-columns: auto auto auto auto;
     background-color: #ffa31a;
     padding: 10px;
@@ -275,4 +288,19 @@ p {
 
 .title {
     font-size: 22px;
+}
+
+#new-game-button {
+    background-color: #3377ff;
+}
+
+#score-note {
+    font-family: 'Oxygen-Light';
+    background-color: white;
+    border-radius: 10px;
+    width: 75%;
+    height: 75%;
+    text-align: center;
+    padding: 35px;
+    font-size: 25px;
 }

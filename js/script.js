@@ -29,12 +29,13 @@ window.addEventListener('DOMContentLoaded', function() {
     const addWordButton = document.getElementById('add-word')
     const submittedWordsUl = document.getElementById('submitted-words-ul')
     const otherFeaturesDiv = document.getElementById('other-features-buttons')
-    const score = document.getElementById("score")
-    const scoreSpan = document.getElementById('score-num')
     const undoButton = document.getElementById('undo')
     const wordControlButtons = document.getElementById('word-control-buttons')
     const gameContainer = document.getElementById('game-container')
     const leaderBoardHeader = document.getElementById('leader-board-header')
+    const leftContainer = document.getElementById('left-side')
+    const newGameButton = document.createElement('button')
+    newGameButton.id = 'new-game-button'
     let allWordsArray = []
     let currentWordContainer = document.getElementById('current-word-container')
     let timerInnerP = document.createElement('p')
@@ -48,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function() {
             e.preventDefault()
             mainContainer.replaceChild(gameContainer, homeContainer)
             gameContainer.style.visibility = 'visible'            
-            time = 60
+            time = 15
             timerInnerP.innerHTML = `${time}`
             timerContainer.appendChild(timerInnerP)
             interval = setInterval(countDown, 1000)
@@ -97,6 +98,36 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    newGameButton.addEventListener('click', function(e){
+        e.preventDefault()
+        const score = document.getElementById('score')
+        leftContainer.replaceChild(board, score)
+        wordControlButtons.style.visibility = 'visible'
+        currentWordContainer.style.visibility = 'visible'
+        otherFeaturesDiv.style.visibility = 'visible'
+        timerContainer.style.visibility = 'visible'           
+        time = 15
+        timerInnerP.innerHTML = `${time}`
+        timerContainer.appendChild(timerInnerP)
+        interval = setInterval(countDown, 1000)
+        clearBoard()
+        createBoard()
+
+        let username = e.target.parentNode.username.value
+        fetch('http://localhost:3000/api/v1/games', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                accepts: 'application/json'
+            },
+            body: JSON.stringify({ username })
+        })
+        .then(resp => resp.json())
+        .then(userData => {
+            game_id = userData.id
+        })
+    })
+
     function createWordLi(word) {
         let wordLi = document.createElement('li')
         wordLi.innerText = word
@@ -114,17 +145,16 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function countDown() {
-        if (time > 0) {
+        if (time > 0 && time > 5) {
             time--
             timerInnerP.innerText = `${time}`
+        } else if (time <= 5 && time > 0 ) {
+            timerInnerP.style.color = 'red'
+            timerInnerP.innerText = `${time}`
+            time--
         } else if (time === 0) {
-            score.style.display = 'visible';
             alert('Time\'s up!')
             time = -1
-            timerContainer.replaceChild(startTimerButton, timerInnerP)
-            currentWordContainer.style.visibility = 'hidden'
-            let allItems = document.getElementsByClassName('item')
-            Array.from(allItems).forEach(item => item.style.backgroundColor = '#80CBC4')
             showScore()
         }
     }
@@ -167,9 +197,13 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function clearBoard() {
+        board.innerHTML = ''
+    }
+
     otherFeaturesDiv.addEventListener('click', function(e) {
         if (e.target.id === 'done') {
-            console.log('your score is')
+            console.log('end game button')
             showScore()
         } else if (e.target.id === 'help') {
             console.log('show instructions')
@@ -179,7 +213,14 @@ window.addEventListener('DOMContentLoaded', function() {
     })
 
     function showScore() {
-        score.style.display = 'visible';
+        console.log('show score func')
+        wordControlButtons.style.visibility = 'hidden'
+        currentWordContainer.style.visibility = 'hidden'
+        otherFeaturesDiv.style.visibility = 'hidden'
+        timerContainer.style.visibility = 'hidden'
+        const score = document.createElement('div')
+        score.className = 'board-container'
+        score.id = 'score'
         clearInterval(interval)
         timerInnerP.innerText = ''
 
@@ -199,8 +240,16 @@ window.addEventListener('DOMContentLoaded', function() {
             .then(resp => resp.json())
             .then(userData => {
                 let finalScore = userData.points
-                scoreSpan.innerText = finalScore
+                score.innerHTML = `
+                    <div id='score-note'>
+                        <p> Your score is ${finalScore} </p>
+                    </div>
+                `
+                const scoreNote = document.getElementById('score-note')
+                newGameButton.innerText = 'Play Again'
+                scoreNote.appendChild(newGameButton)
             })
+            leftContainer.replaceChild(score, board)
     }
 
     undoButton.addEventListener('click', function(e) {
