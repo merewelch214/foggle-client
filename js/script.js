@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function() {
             e.preventDefault()
             mainContainer.replaceChild(gameContainer, homeContainer)
             gameContainer.style.visibility = 'visible'            
-            time = 15
+            time = 45
             timerInnerP.innerHTML = `${time}`
             timerContainer.appendChild(timerInnerP)
             interval = setInterval(countDown, 1000)
@@ -105,7 +105,8 @@ window.addEventListener('DOMContentLoaded', function() {
         wordControlButtons.style.visibility = 'visible'
         currentWordContainer.style.visibility = 'visible'
         otherFeaturesDiv.style.visibility = 'visible'
-        timerContainer.style.visibility = 'visible'           
+        timerContainer.style.visibility = 'visible' 
+        submittedWordsUl.innerHTML = ''        
         time = 15
         timerInnerP.innerHTML = `${time}`
         timerContainer.appendChild(timerInnerP)
