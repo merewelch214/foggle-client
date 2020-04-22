@@ -1,5 +1,5 @@
 #  Foggle Front End
-This repo houses the front end for an application called Foggle. 
+This repo houses the front end for an application called Foggle. The back end for Foggle is located at https://github.com/merewelch214/foggle-api
 
 # Introduction
 Foggle was built to mimic the game Boggle. 
